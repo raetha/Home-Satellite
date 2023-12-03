@@ -1,0 +1,15 @@
+[Unit]
+Description=Wyoming Porcupine1
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/Home-Satellite/wyoming-porcupine1/bin/python3 \
+	-m wyoming_porcupine1 \
+	--uri 'tcp://0.0.0.0:10400' "$@"
+WorkingDirectory=/opt/Home-Satellite/wyoming-porcupine1
+Restart=always
+
+[Install]
+WantedBy=default.target

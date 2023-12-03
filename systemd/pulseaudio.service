@@ -1,0 +1,11 @@
+[Unit]
+Description=PulseAudio Service
+After=avahi-daemon.service network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/pulseaudio --daemonize=no --exit-idle-time=-1 --disallow-exit=true --system --realtime --log-target=journal
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

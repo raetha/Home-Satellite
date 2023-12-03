@@ -1,0 +1,28 @@
+[Unit]
+Description=Home Assistant Satellite
+Wants=network-online.target
+After=network-online.target
+After=pulseaudio.service
+After=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/opt/Home-Satellite/homeassistant-satellite/script/run \
+ --host <host> \
+ --token <token> \
+ --protocol http \
+ --awake-sound sounds/awake.wav \
+ --done-sound sounds/done.wav \
+# --pipeline <NAME> \
+# --mic-device pulse \
+# --snd-device pulse \
+ --vad silero \
+ --noise-suppression 0 --auto-gain 0 --volume-multiplier 1.0 \
+ --wake-word wyoming --wyoming-host localhost --wyoming-port 10400 --wake-word-id jarvis \
+ --pulseaudio --echo-cancel --ducking=0.2
+WorkingDirectory=/opt/Home-Satellite/homeassistant-satellite
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target

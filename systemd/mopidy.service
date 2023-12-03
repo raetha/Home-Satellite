@@ -1,0 +1,21 @@
+[Unit]
+Description=Mopidy Music Server
+After=avahi-daemon.service
+After=dbus.service
+After=network-online.target
+Wants=network-online.target
+After=nss-lookup.target
+After=pulseaudio.service
+After=pipewire.service
+After=remote-fs.target
+After=sound.target
+
+[Service]
+ExecStart=/opt/Home-Satellite/mopidy/bin/mopidy --config /opt/Home-Satellite/mopidy/config/mopidy.conf
+Restart=always
+WorkingDirectory=/opt/Home-Satellite/mopidy
+#Environment="GST_DEBUG=3"
+#Environment="GST_DEBUG_FILE=/opt/mopidy/gstreamer.log"
+
+[Install]
+WantedBy=default.target

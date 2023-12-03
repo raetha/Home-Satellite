@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  wyoming-openwakeword:
+    command: "--preload-model 'hey_jarvis'"
+    container_name: wyoming-openwakeword
+    hostname: wyoming-openwakeword
+    image: rhasspy/wyoming-openwakeword:latest
+    network_mode: bridge
+    ports:
+      - "10400:10400/tcp"
+    restart: unless-stopped

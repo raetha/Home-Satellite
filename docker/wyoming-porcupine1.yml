@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  wyoming-porcupine1:
+    container_name: wyoming-porcupine1
+    hostname: wyoming-porcupine1
+    image: rhasspy/wyoming-porcupine1:latest
+    network_mode: bridge
+    ports:
+      - "10400:10400/tcp"
+    restart: unless-stopped
